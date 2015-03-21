@@ -40,7 +40,7 @@ if (defined('OANDA_CACHE_SERVER') == FALSE) {
 			self::$pairController   = new OandaCache_Controller();
 			self::$globalController = new OandaCache_Controller();
 			
-			self::global_set('DATA_LOCATION',  'data/');
+			self::global_set('DATA_LOCATION',  './data/');
 			if (is_dir(self::global_value('DATA_LOCATION')))
 				self::remove_dir(self::global_value('DATA_LOCATION'));
 			mkdir(self::global_value('DATA_LOCATION'));

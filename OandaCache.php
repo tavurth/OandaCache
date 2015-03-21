@@ -31,8 +31,13 @@ if (defined('OANDA_CACHE_INDEX') == FALSE) {
 	
 	//OandaWrap and setup
 	require '../OandaWrap/OandaWrap.php';
-	OandaWrap::setup('Demo', 'YOUR_API_KEY_HERE', 'YOUR_ACCOUNT_ID_HERE', FALSE);
-	
+
+    $API_KEY    = 'YOURAPIKEY';
+    $ACCOUNT_ID = 'YOURACCOUNTID';
+    
+	if (OandaWrap::setup('Demo', $API_KEY, $ACCOUNT_ID, FALSE) === FALSE)
+      throw new Exception('OandaWrap failed to initialize, check your API Key');
+
 	//Local source files
 	require 'source/Server.php';
 
@@ -41,15 +46,15 @@ if (defined('OANDA_CACHE_INDEX') == FALSE) {
 
     //Add each of the pairs from the pairs.cfg
     echo "Loading pair list...\n";
-	OandaCache::pairs_add(str_getcsv(file_get_contents('pairs.cfg'), "\n"));
+	OandaCache::pairs_add(str_getcsv(file_get_contents('./config/pairs.cfg'), "\n"));
         
     //Add each of the times from the times.cfg
     echo "Loading time settings...\n";
-	OandaCache::times_add(str_getcsv(file_get_contents('times.cfg'), "\n"));
+	OandaCache::times_add(str_getcsv(file_get_contents('./config/times.cfg'), "\n"));
         
     //Load our general config
     echo "Loading general config file... \n";
-	OandaCache::global_load('config.cfg');
+	OandaCache::global_load('./config/config.cfg');
 
     echo "Starting stream... \n";
     //Start streaming, argument is time delay between refresh
