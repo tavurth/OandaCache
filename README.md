@@ -11,7 +11,9 @@
 
     # Setup
         Make sure to edit OandaCache.php to add your Oanda API key and Account ID
-    
+
+        Run with "php OandaCache.php"
+
     
     OandaCache was written for the purpose of Caching Oanda's REST candles offline.
 
