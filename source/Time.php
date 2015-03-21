@@ -120,5 +120,3 @@ if (defined('OANDA_CACHE_TIME') == FALSE) {
     }
   }
 }
-
-?>

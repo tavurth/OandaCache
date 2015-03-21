@@ -70,5 +70,3 @@ if (defined('OANDA_CACHE_CONTROLLER') == FALSE) {
 		}
 	}
 }
-
-?>

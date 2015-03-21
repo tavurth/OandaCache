@@ -50,5 +50,3 @@ if (defined('OANDA_CACHE_PAIR_CONTROLLER') == FALSE) {
 		}
 	}
 }
-
-?>

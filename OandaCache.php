@@ -55,5 +55,3 @@ if (defined('OANDA_CACHE_INDEX') == FALSE) {
     //Start streaming, argument is time delay between refresh
 	OandaCache::stream(5);
 }
-
-?>
