@@ -31,7 +31,7 @@ if (defined('OANDA_CACHE_INDEX') == FALSE) {
 	
 	//OandaWrap and setup
 	require '../OandaWrap/OandaWrap.php';
-	OandaWrap::setup('Demo', 'd16fa71cc1c37bb41666e7186d153d35-881926f971b6a91cd64640cc0e3fdf5a', '4948376', FALSE);
+	OandaWrap::setup('Demo', 'YOUR_API_KEY_HERE', 'YOUR_ACCOUNT_ID_HERE', FALSE);
 	
 	//Local source files
 	require 'source/Server.php';
