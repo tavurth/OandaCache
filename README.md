@@ -1,5 +1,14 @@
 # OandaCache
 
+    # Requires:
+        OANDAWRAP (Find it in my github)
+           I use OandaWrap in the folder above,
+           Source:/
+                OandaWrap/
+                OandaCache/
+
+           However please see fit to modify OandaCache.php to change this location.
+
     OandaCache was written for the purpose of Caching Oanda's REST candles offline.
 
     The application allows access to these candles in their original JSON format.
@@ -12,4 +21,4 @@
 
     Now its fire and forget.
 
-   Enjoy
+   Hope you enjoy, let me know if you have issues.
