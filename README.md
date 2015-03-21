@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/tavurth/OandaCache/badges/gpa.svg)](https://codeclimate.com/github/tavurth/OandaCache)
+
 #OandaCache
 
     # Requires:
