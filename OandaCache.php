@@ -22,11 +22,11 @@
   // This file kept seperate for debugging purposes.
   // To use OandaCache on your system, see readme.txt
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+  //error_reporting(E_ALL);
+  //ini_set('display_errors', 1);
 set_time_limit(0);
 
-if (defined('OANDA_CACHE_INDEX') == FALSE) {
+if (defined('OANDA_CACHE_INDEX') === FALSE) {
   define('OANDA_CACHE_INDEX', TRUE);
 	
   //OandaWrap and setup

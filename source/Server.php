@@ -19,7 +19,7 @@
 
   */
 
-if (defined('OANDA_CACHE_SERVER') == FALSE) {
+if (defined('OANDA_CACHE_SERVER') === FALSE) {
   define('OANDA_CACHE_SERVER', TRUE);
 
   require 'Controller.php';

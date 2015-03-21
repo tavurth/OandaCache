@@ -19,7 +19,7 @@
 
   */
 
-if (defined('OANDA_CACHE_CONTROLLER') == FALSE) {
+if (defined('OANDA_CACHE_CONTROLLER') === FALSE) {
   define('OANDA_CACHE_CONTROLLER', TRUE);
 	
   class OandaCache_Controller {

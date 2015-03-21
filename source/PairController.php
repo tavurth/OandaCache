@@ -19,7 +19,7 @@
 
   */
 
-if (defined('OANDA_CACHE_PAIR_CONTROLLER') == FALSE) {
+if (defined('OANDA_CACHE_PAIR_CONTROLLER') === FALSE) {
   define('OANDA_CACHE_PAIR_CONTROLLER', TRUE);
 	
   include 'Time.php';

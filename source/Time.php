@@ -19,7 +19,7 @@
 
   */
 
-if (defined('OANDA_CACHE_TIME') == FALSE) {
+if (defined('OANDA_CACHE_TIME') === FALSE) {
   define('OANDA_CACHE_TIME', TRUE);
 	
   include "Server.php";
