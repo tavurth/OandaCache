@@ -34,10 +34,6 @@ if (defined('OANDA_CACHE_INDEX') === FALSE) {
 
   $configDir = './config/';
   $config    = $configDir . 'account.cfg';
-
-  $ACCOUNT_KEY = FALSE;
-  $ACCOUNT_NUM = FALSE;
-  $ACCOUNT_TYP = FALSE;
 	
   //Check to see if our config file exists
   if (file_exists($config) === FALSE)
@@ -48,31 +44,21 @@ if (defined('OANDA_CACHE_INDEX') === FALSE) {
 		ACCOUNT_TYP=Demo //(Or "Live")
 	');
 
+  //Set up the array in which to store the acount information
+  $accInfo = array('ACCOUNT_TYP' => '', 'ACCOUNT_KEY' => '', 'ACCOUNT_NUM' => '');
+  
   //Load the values from the config file
-  foreach (str_getcsv(file_get_contents($config), "\n") as $line) {
-	  
+  foreach (str_getcsv(file_get_contents($config), "\n") as $line)
 	  //If the line is not a comment and contains an '=' sign
-	  if (strpos($line, '=') !== FALSE && strpos($line, '/') === FALSE) {
-		  
+	  if (strpos($line, '=') !== FALSE && strpos($line, '/') === FALSE)
 		//Split the line and analyse
-		$data = str_getcsv($line, '=');
-		switch ($data[0]) {
-			case 'ACCOUNT_KEY':
-				$ACCOUNT_KEY = $data[1];
-				break;
-			case 'ACCOUNT_NUM':
-				$ACCOUNT_NUM = $data[1];
-				break;
-			case 'ACCOUNT_TYP':
-				$ACCOUNT_TYP = $data[1];
-				break;
-		}
-	  }
-  }
+		if (($data = str_getcsv($line, '=')) && count($data) > 1)
+			//Add the data key to our account Info
+			$accInfo[$data[0]] = $data[1];
   
   //Set up OandaWrap with the values from the config
-  if (OandaWrap::setup($ACCOUNT_TYP, $ACCOUNT_KEY, $ACCOUNT_NUM, FALSE) === FALSE)
-    throw new Exception('OandaWrap failed to initialize, check your API Key');
+  if (OandaWrap::setup(@$accInfo['ACCOUNT_TYP'], @$accInfo['ACCOUNT_KEY'], @$accInfo['ACCOUNT_NUM'], FALSE) === FALSE)
+	{ echo "\nOandaWrap failed to initialize, check your API Key in ./config/accounts.cfg\n"; die(1); }
 
   //Local source files
   require 'source/Server.php';
