@@ -35,25 +35,29 @@ if (defined('OANDA_CACHE_SERVER') === FALSE) {
         (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
       return rmdir($dir); 
     }
+
+    public static function reset_dir($dir) {
+      // Remove the directory and then recreate
+      if (is_dir($dir))
+        self::remove_dir($dir);
+      mkdir($dir);
+    }
 		
     public static function setup() {
       self::$pairController   = new OandaCache_Controller();
       self::$globalController = new OandaCache_Controller();
 			
       self::global_set('DATA_LOCATION',  './data/');
-      if (is_dir(self::global_value('DATA_LOCATION')))
-        self::remove_dir(self::global_value('DATA_LOCATION'));
-      mkdir(self::global_value('DATA_LOCATION'));
-			
       self::global_set('INITIATAL_COUNT',   500);
       self::global_set('MAXIMUM_COUNT',     2000);
     }
-		
+
     public static function global_load($loc) {
       if (file_exists($loc))
         foreach (str_getcsv(file_get_contents($loc), "\n") as $line) {
           if (strpos($line, '=')) {
             $parts = str_getcsv($line, '=');
+            echo "\t$parts[0] => $parts[1]\n";
             self::global_set($parts[0], $parts[1]);
           }
         }
@@ -95,6 +99,10 @@ if (defined('OANDA_CACHE_SERVER') === FALSE) {
     }
 		
     public static function stream() {
+      //Empty the candles directory
+      echo "Emptying the candle directory...\n";
+      self::reset_dir(self::global_value("DATA_LOCATION"));
+      
       $startTimer   = 0;
       $sleepTimer   = 5;
       echo "Streaming...\n";
