@@ -67,7 +67,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
 
                 // Open the data file and check it exists
                 if (! ($input = fopen($csvFile, 'r'))) {
-                    file_put_contents('errors.txt', 'Error: Could not open file for output ' . $outputFile);
+                    file_put_contents('errors.txt', 'Error: Could not open file to read candle data ' . $outputFile);
                     return;
                 }
 
