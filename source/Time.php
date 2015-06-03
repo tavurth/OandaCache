@@ -78,7 +78,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                 }
 
                 // Calculate the new start position for sliced data
-                $startPos = OandaCache::global_value('MAXIMUM_COUNT')*0.9;
+                $startPos = OandaCache::global_value('MAXIMUM_COUNT')*0.1;
 
                 // Skip lines until the starting position
                 while ($startPos-- > 0)
