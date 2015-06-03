@@ -78,10 +78,10 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                 }
 
                 // Calculate the new start position for sliced data
-                $startPos = OandaCache::global_value('MAXIMUM_COUNT')*0.2;
+                $startPos = OandaCache::global_value('INITIAL_COUNT')*0.2;
 
                 // Skip lines until the starting position
-                while ($startPos-- > 0)
+                while (! feof($input) && ($startPos-- > 0))
                     fgets($input);
 
                 // Read the lines from the old file into the temporary file
@@ -106,7 +106,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                 $candles = $this->candles_cleanup($candlesJson)->candles;
                 if (empty($candles))
                     return;
-				
+
                 //Find where to save the data
                 $outputFile   = OandaCache::global_value('DATA_LOCATION') . $pairRef . '_' . $this->granularity . '.csv';
 
@@ -119,8 +119,11 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                 //Set our last update time
                 $this->lastUpdated = end($candles)->time;
 
+                // Increment the candle counter
+                $this->candlesCount += count($candles);
+                
                 //Check for overflow of maximum lines
-                if (($this->candlesCount += count($candles)) > OandaCache::global_value('MAXIMUM_COUNT'))
+                if ($this->candlesCount > OandaCache::global_value('MAXIMUM_COUNT'))
                     $this->slice_file($outputFile);
 
                 if (count($candles) > 0)
