@@ -85,7 +85,8 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                     fgets($input);
 
                 // Read the lines from the old file into the temporary file
-                while (! feof($input))
+                $candlesProcessed = 0;
+                while (! feof($input) && ++$candlesProcessed)
                     fputs($output, fgets($input));
 
                 // Delete the data file
@@ -95,7 +96,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
                 rename($tempFileLoc, $csvFile);
 
                 //Reset our counter
-                $this->candlesCount = 0;
+                $this->candlesCount = $candlesProcessed;
             }
         }
 		
@@ -121,7 +122,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
 
                 // Increment the candle counter
                 $this->candlesCount += count($candles);
-                
+
                 //Check for overflow of maximum lines
                 if ($this->candlesCount > OandaCache::global_value('MAXIMUM_COUNT'))
                     $this->slice_file($outputFile);
