@@ -48,7 +48,7 @@ if (defined('OANDA_CACHE_SERVER') === FALSE) {
       self::$globalController = new OandaCache_Controller();
 			
       self::global_set('DATA_LOCATION',  './data/');
-      self::global_set('INITIATAL_COUNT',   500);
+      self::global_set('INITIAL_COUNT',     500);
       self::global_set('MAXIMUM_COUNT',     2000);
     }
 

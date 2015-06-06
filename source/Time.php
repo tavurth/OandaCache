@@ -140,7 +140,7 @@ if (defined('OANDA_CACHE_TIME') === FALSE) {
 
             if ($candlesToRetrieve > 0) {
                 if ($candlesToRetrieve > 4000)
-                    return $this->candles_output($pairRef, OandaWrap::candles_count($pairRef, $this->granularity, OandaCache::global_value('INITIATAL_COUNT')));
+                    return $this->candles_output($pairRef, OandaWrap::candles_count($pairRef, $this->granularity, OandaCache::global_value('INITIAL_COUNT')));
                 else
                     return $this->candles_output($pairRef, OandaWrap::candles_time($pairRef, $this->granularity, $this->lastUpdated, time()));
             }
