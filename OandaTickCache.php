@@ -51,9 +51,6 @@ if (defined('OANDA_TICK_CACHE_INDEX') === FALSE) {
 
     function tick_writer($jsonObject) {
         if (isset($jsonObject->tick)) {
-            $bid  = $jsonObject->tick->bid;
-            $ask  = $jsonObject->tick->ask;
-            $time = $jsonObject->tick->time;
             $name = $jsonObject->tick->instrument;
             unset($jsonObject->tick->instrument);
 
