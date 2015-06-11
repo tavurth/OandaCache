@@ -28,7 +28,7 @@ if (defined('OANDA_TICK_CACHE_INDEX') === FALSE) {
     define('OANDA_TICK_CACHE_INDEX', TRUE);
 	
     //OandaWrap and setup
-    require 'source/OandaWrap.php';
+    require 'OandaWrap.php';
 
     //Local source files
     require 'source/Server.php';
