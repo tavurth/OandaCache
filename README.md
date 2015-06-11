@@ -4,10 +4,11 @@
 
     # Requires:
         OANDAWRAP (Find it in my github)
-           I use OandaWrap in the folder above,
+           I use OandaWrap in the same folder:
            Source:/
-                OandaWrap/
                 OandaCache/
+                    OandaCache.php
+                    OandaWrap.php
 
            However please see fit to modify OandaCache.php to change this location.
 
