@@ -56,7 +56,7 @@ if (defined('OANDA_CACHE_SERVER') === FALSE) {
             if (file_exists($loc))
                 foreach (str_getcsv(file_get_contents($loc), "\n") as $line) {
                     // Ignore commented lines
-                    if (! strpos($line, '//')) {
+                    if (strpos($line, '//') === false) {
                         // Check for a valid data line
                         if (strpos($line, '=')) {
                             $parts = str_getcsv($line, '=');
